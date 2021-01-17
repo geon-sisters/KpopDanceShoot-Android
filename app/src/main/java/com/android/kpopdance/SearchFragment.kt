@@ -3,6 +3,7 @@ package com.android.kpopdance
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.search_fragment.*
@@ -75,12 +76,27 @@ class SearchFragment : Fragment() {
         )
 
 
-        val bookmarkAdapter = YoutubeSmallAdapter()
-        bookmarkAdapter.youtubes = youtubes
+        val youtubeSmallAdapter = YoutubeSmallAdapter()
+        youtubeSmallAdapter.youtubes = youtubes
 
-        searchRecyclerView.adapter = bookmarkAdapter
+        searchRecyclerView.adapter = youtubeSmallAdapter
         searchRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+
+        activity?.findViewById<ImageButton>(R.id.mainToolbarButton)?.setOnClickListener {
+            if (drawer.isDrawerOpen(Gravity.RIGHT)) {
+                drawer.closeDrawer(Gravity.RIGHT)
+            } else {
+                drawer.openDrawer(Gravity.RIGHT)
+            }
+        }
+
+
+        val singerAdapter = SingerAdapter()
+        // for test
+        singerAdapter.singers = arrayListOf("Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "EXO")
+        singerRecyclerView.adapter = singerAdapter
+        singerRecyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 }

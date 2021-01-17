@@ -76,10 +76,10 @@ class BookmarkFragment : Fragment() {
             )
         )
 
-        val bookmarkAdapter = YoutubeSmallAdapter()
-        bookmarkAdapter.youtubes = youtubes
+        val youtubeSmallAdapter = YoutubeSmallAdapter()
+        youtubeSmallAdapter.youtubes = youtubes
 
-        bookmarkRecyclerView.adapter = bookmarkAdapter
+        bookmarkRecyclerView.adapter = youtubeSmallAdapter
         bookmarkRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
         viewModel = ViewModelProviders.of(this).get(BookmarkViewModel::class.java)
