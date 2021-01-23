@@ -1,12 +1,13 @@
 package com.android.kpopdance
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.bookmark_fragment.*
 
 
@@ -27,52 +28,54 @@ class BookmarkFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        adView_bookmark.loadAd(AdRequest.Builder().build())
+
         // for test
         val youtubes = arrayListOf(
             Youtube(
-                "noEhgQ0hI6M",
-                "[RAIN - Switch to me (duet with JWP)] dance practice mirrored",
-                "2021.01.16"
+                    "N-n3hEJKvC4",
+                    "(G)I-DLE - HWAA Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "jHW2yLQddNw",
-                "[TWICE - CRY FOR ME] dance practice mirrored",
-                "2021.01.16"
+                    "FPjbtai9rx0",
+                    "aespa (에스파) - Black Mamba Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "scVCHsusm4c",
-                "[IZ*ONE - Sequence] dance practice mirrored",
-                "2021.01.16"
+                    "nvKDrmGP4Is",
+                    "TWICE - I CAN'T STOP ME Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "noEhgQ0hI6M",
-                "[RAIN - Switch to me (duet with JWP)] dance practice mirrored",
-                "2021.01.16"
+                    "RDFJQmNCBoU",
+                    "ITZY - Not Shy Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "jHW2yLQddNw",
-                "[TWICE - CRY FOR ME] dance practice mirrored",
-                "2021.01.16"
+                    "N-n3hEJKvC4",
+                    "(G)I-DLE - HWAA Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "scVCHsusm4c",
-                "[IZ*ONE - Sequence] dance practice mirrored",
-                "2021.01.16"
+                    "FPjbtai9rx0",
+                    "aespa (에스파) - Black Mamba Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "noEhgQ0hI6M",
-                "[RAIN - Switch to me (duet with JWP)] dance practice mirrored",
-                "2021.01.16"
+                    "nvKDrmGP4Is",
+                    "TWICE - I CAN'T STOP ME Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "jHW2yLQddNw",
-                "[TWICE - CRY FOR ME] dance practice mirrored",
-                "2021.01.16"
+                    "RDFJQmNCBoU",
+                    "ITZY - Not Shy Dance Practice (Mirrored)",
+                    "2021.01.16"
             ),
             Youtube(
-                "noEhgQ0hI6M",
-                "[RAIN - Switch to me (duet with JWP)] dance practice mirrored",
-                "2021.01.16"
+                    "ogGuOZ_6O5c",
+                    "CHUNG HA (청하) - Roller Coaster Dance Practice (Mirrored)",
+                    "2021.01.16"
             )
         )
 

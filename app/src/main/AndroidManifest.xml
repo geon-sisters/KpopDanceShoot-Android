@@ -10,6 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--꼭 실제 ID로 변경할 것 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713">
+        </meta-data>
+
         <activity android:name=".MainActivity"
             android:configChanges="layoutDirection|orientation|screenSize">
             <intent-filter>
