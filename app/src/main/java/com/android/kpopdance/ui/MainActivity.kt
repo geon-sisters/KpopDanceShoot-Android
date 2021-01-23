@@ -1,10 +1,11 @@
-package com.android.kpopdance
+package com.android.kpopdance.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.android.kpopdance.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,6 +14,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     companion object {
         private val TAG = "[KPopDance]" + MainActivity::class.simpleName
     }
+    private val homeFragment = HomeFragment()
+    private val searchFragment = SearchFragment()
+    private val bookmarkFragment = BookmarkFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +28,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
-        supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, HomeFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, homeFragment).commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -33,21 +37,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 Log.i(TAG, "home")
                 mainToolbarTextView.setText(R.string.home)
                 mainToolbarButton.setVisibility(View.INVISIBLE)
-                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, HomeFragment()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, homeFragment).commit()
             }
             R.id.bottom_search -> {
                 Log.i(TAG, "search")
                 mainToolbarTextView.setText(R.string.search)
                 mainToolbarButton.setVisibility(View.VISIBLE)
-                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, SearchFragment()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, searchFragment).commit()
             }
             R.id.bottom_bookmark -> {
                 Log.i(TAG, "bookmark")
                 mainToolbarTextView.setText(R.string.bookmark)
                 mainToolbarButton.setVisibility(View.INVISIBLE)
-                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout,
-                    BookmarkFragment()
-                ).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, bookmarkFragment).commit()
             }
         }
         return true

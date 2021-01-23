@@ -1,10 +1,11 @@
-package com.android.kpopdance
+package com.android.kpopdance.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.android.kpopdance.R
 
 class SingerAdapter : RecyclerView.Adapter<SingerAdapter.ViewHolder>() {
     var singers = mutableListOf<String>()

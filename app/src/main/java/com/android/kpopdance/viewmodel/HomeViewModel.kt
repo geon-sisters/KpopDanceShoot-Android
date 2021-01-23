@@ -1,4 +1,4 @@
-package com.android.kpopdance
+package com.android.kpopdance.viewmodel
 
 import androidx.lifecycle.ViewModel
 
