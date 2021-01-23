@@ -31,7 +31,7 @@ class YoutubeBigAdapter : RecyclerView.Adapter<YoutubeBigAdapter.ViewHolder>() {
             titleTextView.text = youtube.title
             dateTextView.text = youtube.date
             Glide.with(itemView)
-                    .load("https://img.youtube.com/vi/" + youtube.id + "/hqdefault.jpg")
+                    .load("https://img.youtube.com/vi/" + youtube.id + "/maxresdefault.jpg")
                     .into(bigThumbnailView)
         }
     }
