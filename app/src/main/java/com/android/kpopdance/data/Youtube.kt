@@ -1,4 +1,4 @@
-package com.android.kpopdance
+package com.android.kpopdance.data
 
 data class Youtube (
     val id: String,
