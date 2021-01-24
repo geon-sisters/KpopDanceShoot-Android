@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.kpopdance.R
 import com.android.kpopdance.data.Youtube
 import com.android.kpopdance.viewmodel.BookmarkViewModel
@@ -86,9 +84,6 @@ class BookmarkFragment : Fragment() {
         youtubeSmallAdapter.youtubes = youtubes
 
         bookmarkRecyclerView.adapter = youtubeSmallAdapter
-        bookmarkRecyclerView.layoutManager = LinearLayoutManager(this.context)
-
-        viewModel = ViewModelProviders.of(this).get(BookmarkViewModel::class.java)
     }
 
 }

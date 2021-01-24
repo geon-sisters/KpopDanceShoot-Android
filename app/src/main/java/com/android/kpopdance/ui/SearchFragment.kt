@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.kpopdance.R
 import com.android.kpopdance.viewmodel.SearchViewModel
 import com.android.kpopdance.data.Youtube
@@ -86,7 +85,6 @@ class SearchFragment : Fragment() {
         youtubeSmallAdapter.youtubes = youtubes
 
         searchRecyclerView.adapter = youtubeSmallAdapter
-        searchRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
@@ -103,6 +101,5 @@ class SearchFragment : Fragment() {
         // for test
         singerAdapter.singers = arrayListOf("Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "EXO")
         singerRecyclerView.adapter = singerAdapter
-        singerRecyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 }

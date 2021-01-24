@@ -48,6 +48,7 @@
                 android:id="@+id/searchRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/youtube_small_item" />
         </LinearLayout>
 
@@ -72,6 +73,7 @@
                 android:id="@+id/singerRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/singer_item" />
         </LinearLayout>
 
