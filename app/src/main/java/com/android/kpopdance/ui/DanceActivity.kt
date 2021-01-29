@@ -7,7 +7,7 @@ import com.android.kpopdance.contract.Contract
 import com.android.kpopdance.R
 
 class DanceActivity : AppCompatActivity() {
-    private val TAG = "[KPopDance]" + DanceActivity::class.simpleName
+    private val TAG = Contract.K_POP_DANCE + DanceActivity::class.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
