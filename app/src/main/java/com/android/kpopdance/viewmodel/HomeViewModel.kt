@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.kpopdance.contract.Contract.Companion.K_POP_DANCE
 import com.android.kpopdance.data.Youtube
+import com.android.kpopdance.repository.BookmarkRepository
 import com.android.kpopdance.repository.YoutubeRepository
 
-class HomeViewModel(private val youtubeRepository: YoutubeRepository) : BaseViewModel() {
+class HomeViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRepository: BookmarkRepository) : BaseViewModel(bookmarkRepository) {
     private val TAG = K_POP_DANCE + HomeViewModel::class.simpleName
 
     private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())

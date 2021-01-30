@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.kpopdance.contract.Contract
 import com.android.kpopdance.data.Youtube
+import com.android.kpopdance.repository.BookmarkRepository
 import com.android.kpopdance.repository.YoutubeRepository
 
-class SearchViewModel(private val youtubeRepository: YoutubeRepository) : BaseViewModel() {
+class SearchViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRepository: BookmarkRepository) : BaseViewModel(bookmarkRepository) {
     private val TAG = Contract.K_POP_DANCE + SearchViewModel::class.simpleName
 
     private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())
@@ -34,9 +35,9 @@ class SearchViewModel(private val youtubeRepository: YoutubeRepository) : BaseVi
 
     private fun getSearchedYoutube() {
         addToDisposable(
-            youtubeRepository.getAll()
+            youtubeRepository.getSearched(query)
                 .subscribe({
-                    _youtubes.value = it.filter {item -> item.title.contains(query, ignoreCase = true) }
+                    _youtubes.value = it
                     Log.d(TAG, "Success")
                 }, {
                     Log.d(TAG, "Fail : $it")

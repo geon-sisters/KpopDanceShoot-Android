@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="item" type="com.android.kpopdance.data.Youtube" />
         <variable name="vm" type="com.android.kpopdance.viewmodel.SearchViewModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -61,7 +61,9 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
-                    app:srcCompat="@drawable/ic_star_black_24dp" />
+                    android:onClick="@{(view) -> vm.onBookmarkClicked(view, item)}"
+                    android:tint="@{item.isBookmarked ? @color/orange : @color/lightGray}"
+                    app:srcCompat="@drawable/ic_star_black_24dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
