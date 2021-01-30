@@ -1,91 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.SearchFragment">
+<layout>
+    <data>
+        <variable name="vm" type="com.android.kpopdance.viewmodel.SearchViewModel" />
+    </data>
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.SearchFragment">
 
-        <LinearLayout
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/searchEditText"
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/searchButton"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_margin="10dp">
 
-                <ImageButton
-                    android:id="@+id/searchButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="#00FFFFFF"
-                    android:src="@drawable/ic_search_black_24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/searchEditText"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <EditText
+                        android:id="@+id/searchEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:onTextChanged="@{(text, start, before, count) -> vm.onEditTextChanged(text)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/searchButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/searchRecyclerView"
-                android:layout_width="match_parent"
+                    <ImageButton
+                        android:id="@+id/searchButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:src="@drawable/ic_search_black_24dp"
+                        android:onClick="@{() -> vm.onSearchButtonClicked()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/searchEditText"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/searchRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:searchViewModel="@{vm}"
+                    app:searchYoutubes="@{vm.youtubes}"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="300dp"
                 android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/youtube_small_item" />
-        </LinearLayout>
+                android:orientation="vertical"
+                android:layout_gravity="right"
+                android:background="#FFFFFF">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="@string/artist"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="right"
-            android:background="#FFFFFF">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/singerRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/singer_item" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="20dp"
-                android:text="@string/artist"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+        </androidx.drawerlayout.widget.DrawerLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/singerRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/singer_item" />
-        </LinearLayout>
-
-    </androidx.drawerlayout.widget.DrawerLayout>
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
-</FrameLayout>
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        </com.google.android.gms.ads.AdView>
+    </FrameLayout>
+</layout>

@@ -3,6 +3,7 @@ package com.android.kpopdance
 import com.android.kpopdance.model.YoutubeApi
 import com.android.kpopdance.repository.YoutubeRepository
 import com.android.kpopdance.viewmodel.HomeViewModel
+import com.android.kpopdance.viewmodel.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -26,5 +27,9 @@ val appModule: Module = module {
 
     viewModel {
         HomeViewModel(get())
+    }
+
+    viewModel {
+        SearchViewModel(get())
     }
 }

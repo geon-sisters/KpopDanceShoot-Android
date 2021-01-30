@@ -1,92 +1,42 @@
 package com.android.kpopdance.ui
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
-import androidx.fragment.app.Fragment
+import androidx.databinding.DataBindingUtil
 import com.android.kpopdance.R
+import com.android.kpopdance.databinding.SearchFragmentBinding
 import com.android.kpopdance.viewmodel.SearchViewModel
-import com.android.kpopdance.data.Youtube
+import com.android.kpopdance.viewmodel.eventObserve
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.search_fragment.*
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
-class SearchFragment : Fragment() {
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
-
-    private lateinit var viewModel: SearchViewModel
+class SearchFragment : BaseFragment() {
+    private lateinit var binding: SearchFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.search_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.search_fragment, container, false)
+
+        val viewModel: SearchViewModel = getViewModel()
+        viewModel.clickedYoutubeId.eventObserve(this) { youtubeId -> startDanceActivity(youtubeId)}
+
+        binding.vm = viewModel
+        binding.lifecycleOwner = this.activity
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         adView_search.loadAd(AdRequest.Builder().build())
-
-        // for test
-        val youtubes = arrayListOf(
-            Youtube(
-                "N-n3hEJKvC4",
-                "(G)I-DLE - HWAA Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "FPjbtai9rx0",
-                "aespa (에스파) - Black Mamba Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "nvKDrmGP4Is",
-                "TWICE - I CAN'T STOP ME Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "RDFJQmNCBoU",
-                "ITZY - Not Shy Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "N-n3hEJKvC4",
-                "(G)I-DLE - HWAA Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "FPjbtai9rx0",
-                "aespa (에스파) - Black Mamba Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "nvKDrmGP4Is",
-                "TWICE - I CAN'T STOP ME Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "RDFJQmNCBoU",
-                "ITZY - Not Shy Dance Practice (Mirrored)",
-                "2021.01.16"
-            ),
-            Youtube(
-                "ogGuOZ_6O5c",
-                "CHUNG HA (청하) - Roller Coaster Dance Practice (Mirrored)",
-                "2021.01.16"
-            )
-        )
-
-
-        val searchYoutubeAdapter = SearchYoutubeAdapter()
-        searchYoutubeAdapter.youtubes = youtubes
-
-        searchRecyclerView.adapter = searchYoutubeAdapter
-
-        viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
         activity?.findViewById<ImageButton>(R.id.mainToolbarButton)?.setOnClickListener {
             if (drawer.isDrawerOpen(Gravity.RIGHT)) {
