@@ -27,7 +27,7 @@ class HomeViewModel(private val youtubeRepository: YoutubeRepository) : BaseView
             }))
     }
 
-    fun onBigYoutubeClicked(youtubeId: String) {
+    fun onYoutubeClicked(youtubeId: String) {
         _clickedYoutubeId.value = Event(youtubeId)
     }
 }

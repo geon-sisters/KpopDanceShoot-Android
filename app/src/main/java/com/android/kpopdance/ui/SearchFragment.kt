@@ -81,10 +81,10 @@ class SearchFragment : Fragment() {
         )
 
 
-        val youtubeSmallAdapter = YoutubeSmallAdapter()
-        youtubeSmallAdapter.youtubes = youtubes
+        val searchYoutubeAdapter = SearchYoutubeAdapter()
+        searchYoutubeAdapter.youtubes = youtubes
 
-        searchRecyclerView.adapter = youtubeSmallAdapter
+        searchRecyclerView.adapter = searchYoutubeAdapter
 
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
 

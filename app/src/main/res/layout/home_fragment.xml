@@ -14,8 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:viewModel="@{vm}"
-            app:bigYoutubes="@{vm.youtubes}"/>
+            app:homeViewModel="@{vm}"
+            app:homeYoutubes="@{vm.youtubes}"/>
 
     </FrameLayout>
 </layout>

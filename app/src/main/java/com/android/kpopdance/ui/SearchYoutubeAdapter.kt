@@ -10,11 +10,11 @@ import com.android.kpopdance.R
 import com.android.kpopdance.data.Youtube
 import com.bumptech.glide.Glide
 
-class YoutubeSmallAdapter : RecyclerView.Adapter<YoutubeSmallAdapter.ViewHolder>()  {
+class SearchYoutubeAdapter : RecyclerView.Adapter<SearchYoutubeAdapter.ViewHolder>()  {
     var youtubes = mutableListOf<Youtube>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.youtube_small_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_youtube_item, parent, false)
         return ViewHolder(view)
     }
 

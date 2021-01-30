@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kpopdance.R
 import com.android.kpopdance.data.Youtube
-import com.android.kpopdance.databinding.YoutubeBigItemBinding
+import com.android.kpopdance.databinding.HomeYoutubeItemBinding
 import com.android.kpopdance.viewmodel.HomeViewModel
 
-class YoutubeBigAdapter(var items: List<Youtube> = arrayListOf(), val vm: HomeViewModel) : RecyclerView.Adapter<YoutubeBigAdapter.ViewHolder>() {
+class HomeYoutubeAdapter(var items: List<Youtube> = arrayListOf(), val vm: HomeViewModel) : RecyclerView.Adapter<HomeYoutubeAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.youtube_big_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.home_youtube_item, parent, false))
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -22,6 +22,6 @@ class YoutubeBigAdapter(var items: List<Youtube> = arrayListOf(), val vm: HomeVi
     override fun getItemCount(): Int = items.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding: YoutubeBigItemBinding = YoutubeBigItemBinding.bind(itemView)
+        val binding: HomeYoutubeItemBinding = HomeYoutubeItemBinding.bind(itemView)
     }
 }
