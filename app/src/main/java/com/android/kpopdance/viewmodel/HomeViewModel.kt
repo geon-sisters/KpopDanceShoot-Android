@@ -10,24 +10,19 @@ import com.android.kpopdance.repository.YoutubeRepository
 class HomeViewModel(private val youtubeRepository: YoutubeRepository) : BaseViewModel() {
     private val TAG = K_POP_DANCE + HomeViewModel::class.simpleName
 
-    val youtubes: MutableLiveData<List<Youtube>> = MutableLiveData(arrayListOf())
-
-    private val _clickedYoutubeId = MutableLiveData<Event<String>>()
-    val clickedYoutubeId: LiveData<Event<String>> get() = _clickedYoutubeId
+    private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())
+    val youtubes: LiveData<List<Youtube>> get() = _youtubes
 
     init {
         Log.i(TAG, "init")
-
-        addToDisposable(youtubeRepository.disposal
-            .subscribe({
-                youtubes.value = it
-                Log.d(TAG, "성공 : " + youtubes.value)
-            }, {
-                Log.d(TAG, "실패 : $it")
-            }))
-    }
-
-    fun onBigYoutubeClicked(youtubeId: String) {
-        _clickedYoutubeId.value = Event(youtubeId)
+        addToDisposable(
+            youtubeRepository.getAll()
+                .subscribe({
+                    _youtubes.value = it
+                    Log.d(TAG, "Success")
+                }, {
+                    Log.d(TAG, "Fail : $it")
+                })
+        )
     }
 }

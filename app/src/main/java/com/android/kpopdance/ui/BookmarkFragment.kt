@@ -80,10 +80,10 @@ class BookmarkFragment : Fragment() {
             )
         )
 
-        val youtubeSmallAdapter = YoutubeSmallAdapter()
-        youtubeSmallAdapter.youtubes = youtubes
+        val bookmarkYoutubeAdapter = BookmarkYoutubeAdapter()
+        bookmarkYoutubeAdapter.youtubes = youtubes
 
-        bookmarkRecyclerView.adapter = youtubeSmallAdapter
+        bookmarkRecyclerView.adapter = bookmarkYoutubeAdapter
     }
 
 }

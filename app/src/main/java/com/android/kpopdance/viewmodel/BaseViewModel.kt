@@ -1,13 +1,13 @@
 package com.android.kpopdance.viewmodel
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 open class BaseViewModel : ViewModel() {
+    private val _clickedYoutubeId = MutableLiveData<Event<String>>()
+    val clickedYoutubeId: LiveData<Event<String>> get() = _clickedYoutubeId
+
     private val disposables: CompositeDisposable = CompositeDisposable()
 
     fun addToDisposable(disposable: Disposable) {
@@ -17,6 +17,10 @@ open class BaseViewModel : ViewModel() {
     override fun onCleared() {
         disposables.clear()
         super.onCleared()
+    }
+
+    fun onYoutubeClicked(youtubeId: String) {
+        _clickedYoutubeId.value = Event(youtubeId)
     }
 }
 
