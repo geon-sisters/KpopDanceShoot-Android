@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="horizontal"
+        android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> vm.onYoutubeClicked(item.id)}">
 
         <ImageView
