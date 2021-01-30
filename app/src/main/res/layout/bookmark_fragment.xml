@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.BookmarkFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bookmarkRecyclerView"
+<layout>
+    <data>
+        <variable name="vm" type="com.android.kpopdance.viewmodel.BookmarkViewModel" />
+    </data>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/bookmark_youtube_item"/>
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.BookmarkFragment">
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bookmarkRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:bookmarkViewModel="@{vm}"
+            app:bookmarkYoutubes="@{vm.youtubes}"/>
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        </com.google.android.gms.ads.AdView>
+    </FrameLayout>
+</layout>

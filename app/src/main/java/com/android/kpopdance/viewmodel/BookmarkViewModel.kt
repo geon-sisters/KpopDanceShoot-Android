@@ -1,7 +1,35 @@
 package com.android.kpopdance.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.android.kpopdance.contract.Contract
+import com.android.kpopdance.data.Youtube
+import com.android.kpopdance.repository.BookmarkRepository
+import com.android.kpopdance.repository.YoutubeRepository
 
-class BookmarkViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class BookmarkViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRepository: BookmarkRepository) : BaseViewModel(bookmarkRepository) {
+    override fun onPostBookmarkClicked() = getBookmarkedYoutube()
+
+    private val TAG = Contract.K_POP_DANCE + BookmarkViewModel::class.simpleName
+
+    private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())
+    val youtubes: LiveData<List<Youtube>> get() = _youtubes
+
+    init {
+        Log.i(TAG, "init")
+        getBookmarkedYoutube()
+    }
+
+    private fun getBookmarkedYoutube() {
+        addToDisposable(
+            youtubeRepository.getBookmarked()
+                .subscribe({
+                    _youtubes.value = it
+                    Log.d(TAG, "Success")
+                }, {
+                    Log.d(TAG, "Fail : $it")
+                })
+        )
+    }
 }
