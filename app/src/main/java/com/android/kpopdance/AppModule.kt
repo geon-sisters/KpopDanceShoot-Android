@@ -4,6 +4,7 @@ import com.android.kpopdance.model.AppDatabase
 import com.android.kpopdance.model.YoutubeApi
 import com.android.kpopdance.repository.BookmarkRepository
 import com.android.kpopdance.repository.YoutubeRepository
+import com.android.kpopdance.viewmodel.BookmarkViewModel
 import com.android.kpopdance.viewmodel.HomeViewModel
 import com.android.kpopdance.viewmodel.SearchViewModel
 import org.koin.android.ext.koin.androidContext
@@ -35,4 +36,6 @@ val appModule: Module = module {
     viewModel { HomeViewModel(get(), get()) }
 
     viewModel { SearchViewModel(get(), get()) }
+
+    viewModel { BookmarkViewModel(get(), get()) }
 }

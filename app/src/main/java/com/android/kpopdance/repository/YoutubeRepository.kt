@@ -51,4 +51,8 @@ class YoutubeRepository(private val youtubeApi: YoutubeApi, private val bookmark
             it.filter { item -> item.title.contains(query, ignoreCase = true) }
         }
     }
+
+    fun getBookmarked(): Maybe<List<Youtube>> {
+        return getAll().map { it.filter { item -> item.isBookmarked } }
+    }
 }

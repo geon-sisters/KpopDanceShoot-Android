@@ -4,8 +4,10 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kpopdance.data.Youtube
+import com.android.kpopdance.ui.BookmarkYoutubeAdapter
 import com.android.kpopdance.ui.HomeYoutubeAdapter
 import com.android.kpopdance.ui.SearchYoutubeAdapter
+import com.android.kpopdance.viewmodel.BookmarkViewModel
 import com.android.kpopdance.viewmodel.HomeViewModel
 import com.android.kpopdance.viewmodel.SearchViewModel
 import com.bumptech.glide.Glide
@@ -31,6 +33,20 @@ fun setSearchYoutubes(view: RecyclerView, items: List<Youtube>, vm: SearchViewMo
         }
     } ?: run {
         SearchYoutubeAdapter(items, vm).apply {
+            view.adapter = this
+        }
+    }
+}
+
+@BindingAdapter(value = ["bookmarkYoutubes", "bookmarkViewModel"])
+fun setBookmarkYoutubes(view: RecyclerView, items: List<Youtube>, vm: BookmarkViewModel) {
+    view.adapter?.run {
+        if (this is BookmarkYoutubeAdapter) {
+            this.items = items
+            this.notifyDataSetChanged()
+        }
+    } ?: run {
+        BookmarkYoutubeAdapter(items, vm).apply {
             view.adapter = this
         }
     }
