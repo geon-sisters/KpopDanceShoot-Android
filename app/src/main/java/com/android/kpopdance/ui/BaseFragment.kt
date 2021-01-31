@@ -6,7 +6,7 @@ import com.android.kpopdance.contract.Contract
 
 open class BaseFragment : Fragment()  {
     fun startDanceActivity(youtubeId: String) {
-        val intent = Intent(activity, DanceActivity::class.java)
+        val intent = Intent(activity, DancePortraitActivity::class.java)
         intent.putExtra(Contract.ID, youtubeId)
         startActivity(intent)
     }

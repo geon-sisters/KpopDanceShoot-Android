@@ -26,8 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DanceActivity" />
+
         <activity android:name=".ui.LoadingActivity"/>
+
+        <activity android:name=".ui.DancePortraitActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>
