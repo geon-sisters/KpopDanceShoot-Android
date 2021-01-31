@@ -7,12 +7,12 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kpopdance.R
 
-class SingerAdapter : RecyclerView.Adapter<SingerAdapter.ViewHolder>() {
+class QuickSearchAdapter : RecyclerView.Adapter<QuickSearchAdapter.ViewHolder>() {
     var singers = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.singer_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.quick_search_item, parent, false)
         return ViewHolder(view)
     }
 

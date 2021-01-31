@@ -82,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/singer_item" />
+                    tools:listitem="@layout/quick_search_item" />
             </LinearLayout>
 
         </androidx.drawerlayout.widget.DrawerLayout>

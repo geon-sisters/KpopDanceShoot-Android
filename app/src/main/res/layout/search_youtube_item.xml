@@ -62,7 +62,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
-                    android:onClick="@{(view) -> vm.onBookmarkClicked(view, item)}"
+                    android:onClick="@{() -> vm.onBookmarkClicked(item)}"
                     android:tint="@{item.isBookmarked ? @color/orange : @color/lightGray}"
                     app:srcCompat="@drawable/ic_star_black_24dp"/>
             </LinearLayout>

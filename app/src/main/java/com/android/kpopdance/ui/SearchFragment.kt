@@ -47,9 +47,9 @@ class SearchFragment : BaseFragment() {
         }
 
 
-        val singerAdapter = SingerAdapter()
+        val quickSearchAdapter = QuickSearchAdapter()
         // for test
-        singerAdapter.singers = arrayListOf("Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "EXO")
-        singerRecyclerView.adapter = singerAdapter
+        quickSearchAdapter.singers = arrayListOf("Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "EXO")
+        singerRecyclerView.adapter = quickSearchAdapter
     }
 }

@@ -9,7 +9,7 @@ import com.android.kpopdance.repository.BookmarkRepository
 import com.android.kpopdance.repository.YoutubeRepository
 
 class HomeViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRepository: BookmarkRepository) : BaseViewModel(bookmarkRepository) {
-    override fun onPostBookmarkClicked() {}
+    override fun onPostBookmarkClicked() = getAllYoutube()
 
     private val TAG = K_POP_DANCE + HomeViewModel::class.simpleName
 
@@ -18,6 +18,10 @@ class HomeViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRe
 
     init {
         Log.i(TAG, "init")
+        getAllYoutube()
+    }
+
+    private fun getAllYoutube() {
         addToDisposable(
             youtubeRepository.getAll()
                 .subscribe({
