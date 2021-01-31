@@ -26,9 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.DanceActivity"></activity>
-
+        <activity android:name=".ui.DanceActivity" />
+        <activity android:name=".ui.LoadingActivity"/>
     </application>
 
 </manifest>
