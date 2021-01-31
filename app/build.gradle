@@ -54,7 +54,7 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.1.0'
 
     // Youtube
-    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation 'kr.co.prnd:youtube-player-view:1.4.0'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'

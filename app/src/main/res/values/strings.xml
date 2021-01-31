@@ -4,4 +4,6 @@
     <string name="search">Search</string>
     <string name="bookmark">Bookmark</string>
     <string name="artist">Artist</string>
+    <string name="camera">Camera</string>
+    <string name="album">Album</string>
 </resources>

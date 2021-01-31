@@ -1,8 +1,5 @@
 package com.android.kpopdance.viewmodel
 
-import android.graphics.Color
-import android.view.View
-import android.widget.ImageButton
 import androidx.lifecycle.*
 import com.android.kpopdance.data.Youtube
 import com.android.kpopdance.repository.BookmarkRepository
@@ -30,15 +27,12 @@ abstract class BaseViewModel(private val bookmarkRepository: BookmarkRepository)
         _clickedYoutubeId.value = Event(youtubeId)
     }
 
-    fun onBookmarkClicked(view: View, youtube: Youtube) {
+    fun onBookmarkClicked(youtube: Youtube) {
         youtube.isBookmarked = !youtube.isBookmarked
-        val imageButton = view as ImageButton
         if (youtube.isBookmarked) {
             bookmarkRepository.insert(youtube.id)
-            imageButton.setColorFilter(Color.parseColor("#FFBB33"))
         } else {
             bookmarkRepository.delete(youtube.id)
-            imageButton.setColorFilter(Color.parseColor("#7C7C7C"))
         }
         onPostBookmarkClicked()
     }
