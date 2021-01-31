@@ -1,5 +1,6 @@
 package com.android.kpopdance.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val intent = Intent(this, LoadingActivity::class.java)
+        startActivity(intent)
         MobileAds.initialize(this) {}
 
         setSupportActionBar(findViewById(R.id.mainToolbar))
