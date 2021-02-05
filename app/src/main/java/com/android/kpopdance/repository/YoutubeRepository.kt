@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class YoutubeRepository(private val youtubeApi: YoutubeApi, private val bookmarkDao: BookmarkDao) {
-    private val TAG = Contract.K_POP_DANCE + YoutubeRepository::class.simpleName
+    private val TAG = Contract.YOUR_KDANCE + YoutubeRepository::class.simpleName
 
     private var cachedYoutubes: List<Youtube> = arrayListOf()
 

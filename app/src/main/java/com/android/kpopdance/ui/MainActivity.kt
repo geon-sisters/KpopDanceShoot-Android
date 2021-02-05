@@ -13,7 +13,7 @@ import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-    private val TAG = Contract.K_POP_DANCE + MainActivity::class.simpleName
+    private val TAG = Contract.YOUR_KDANCE + MainActivity::class.simpleName
     private val homeFragment = HomeFragment()
     private val searchFragment = SearchFragment()
     private val bookmarkFragment = BookmarkFragment()

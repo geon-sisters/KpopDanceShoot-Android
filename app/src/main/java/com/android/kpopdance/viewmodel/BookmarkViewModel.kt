@@ -11,7 +11,7 @@ import com.android.kpopdance.repository.YoutubeRepository
 class BookmarkViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRepository: BookmarkRepository) : BaseViewModel(bookmarkRepository) {
     override fun onPostBookmarkClicked() = getBookmarkedYoutube()
 
-    private val TAG = Contract.K_POP_DANCE + BookmarkViewModel::class.simpleName
+    private val TAG = Contract.YOUR_KDANCE + BookmarkViewModel::class.simpleName
 
     private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())
     val youtubes: LiveData<List<Youtube>> get() = _youtubes

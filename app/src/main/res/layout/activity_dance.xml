@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.DancePortraitActivity">
+    tools:context=".ui.DanceActivity">
 
     <kr.co.prnd.YouTubePlayerView
         android:id="@+id/youtubePlayerView"
@@ -22,6 +22,6 @@
     <FrameLayout
         android:id="@+id/danceFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
