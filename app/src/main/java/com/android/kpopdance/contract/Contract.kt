@@ -2,7 +2,7 @@ package com.android.kpopdance.contract
 
 class Contract {
     companion object {
-        const val K_POP_DANCE = "[KPopDance]"
+        const val YOUR_KDANCE = "[YourKDance]"
         const val ID = "id"
     }
 }

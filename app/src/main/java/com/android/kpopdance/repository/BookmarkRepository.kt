@@ -6,7 +6,7 @@ import com.android.kpopdance.model.Bookmark
 import com.android.kpopdance.model.BookmarkDao
 
 class BookmarkRepository(private val bookmarkDao: BookmarkDao) {
-    private val TAG = Contract.K_POP_DANCE + BookmarkRepository::class.simpleName
+    private val TAG = Contract.YOUR_KDANCE + BookmarkRepository::class.simpleName
 
     fun insert(youtubeId: String) {
         Thread(Runnable {

@@ -11,8 +11,7 @@ import com.android.kpopdance.repository.YoutubeRepository
 class SearchViewModel(private val youtubeRepository: YoutubeRepository, bookmarkRepository: BookmarkRepository) : BaseViewModel(bookmarkRepository) {
     override fun onPostBookmarkClicked() = getSearchedYoutube()
 
-    private val TAG = Contract.K_POP_DANCE + SearchViewModel::class.simpleName
-
+    private val TAG = Contract.YOUR_KDANCE + SearchViewModel::class.simpleName
     private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())
     val youtubes: LiveData<List<Youtube>> get() = _youtubes
 
