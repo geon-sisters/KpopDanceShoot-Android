@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.bottom_home -> {
                 Log.i(TAG, "home")
-                mainToolbarTextView.setText(R.string.home)
+                mainToolbarTextView.setText(R.string.app_name)
                 mainToolbarButton.setVisibility(View.INVISIBLE)
                 supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, homeFragment).commit()
             }
