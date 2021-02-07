@@ -1,5 +1,7 @@
 package com.android.kpopdance.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -55,5 +57,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
         }
         return true
+    }
+
+    override fun onBackPressed(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Thank you")
+        builder.setMessage("Do you really want to close the app?")
+        builder.setPositiveButton("close") { _: DialogInterface?, _: Int -> finish()}
+        builder.setNegativeButton("cancel", null)
+        builder.show()
     }
 }
