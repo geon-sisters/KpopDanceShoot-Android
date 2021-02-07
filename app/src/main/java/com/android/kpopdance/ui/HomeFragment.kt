@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
 
         val viewModel: HomeViewModel = getViewModel()
-        viewModel.clickedYoutubeId.eventObserve(this) { youtubeId -> startDanceActivity(youtubeId) }
+        viewModel.clickedYoutube.eventObserve(this) { youtube -> startDanceActivity(youtube) }
 
         binding.vm = viewModel
         binding.lifecycleOwner = this.activity

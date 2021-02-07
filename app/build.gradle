@@ -73,5 +73,9 @@ dependencies {
     // CameraView
     api 'com.otaliastudios:cameraview:2.7.0'
 
+    // ExoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.13.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.13.0'
+
     testImplementation 'junit:junit:4.12'
 }

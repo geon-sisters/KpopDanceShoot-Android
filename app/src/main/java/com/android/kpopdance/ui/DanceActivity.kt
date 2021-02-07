@@ -14,13 +14,15 @@ import kr.co.prnd.YouTubePlayerView
 class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private val TAG = Contract.YOUR_KDANCE + DanceActivity::class.simpleName
     private var youtubeId: String = ""
+    private var youtubeTitle: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dance)
 
-        youtubeId = intent.getStringExtra(Contract.ID) ?: ""
         Log.d(TAG, youtubeId)
+        youtubeId = intent.getStringExtra(Contract.ID) ?: ""
+        youtubeTitle = intent.getStringExtra(Contract.TITLE) ?: ""
 
         val youTubePlayerView: YouTubePlayerView = findViewById(R.id.youtubePlayerView)
         youTubePlayerView.play(youtubeId)
@@ -37,7 +39,7 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
             R.id.dance_album -> {
                 Log.i(TAG, "album")
-                supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, AlbumFragment()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getAlbumFragment()).commit()
             }
         }
         return true
@@ -45,9 +47,20 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun getCameraFragment(): CameraFragment {
         val cameraFragment = CameraFragment()
+        cameraFragment.arguments = getBundle()
+        return cameraFragment
+    }
+
+    private fun getAlbumFragment(): AlbumFragment {
+        val albumFragment = AlbumFragment()
+        albumFragment.arguments = getBundle()
+        return albumFragment
+    }
+
+    private fun getBundle(): Bundle {
         val bundle = Bundle()
         bundle.putString(Contract.ID, youtubeId)
-        cameraFragment.arguments = bundle
-        return cameraFragment
+        bundle.putString(Contract.TITLE, youtubeTitle)
+        return bundle
     }
 }

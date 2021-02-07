@@ -7,8 +7,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 abstract class BaseViewModel(private val bookmarkRepository: BookmarkRepository) : ViewModel() {
-    private val _clickedYoutubeId = MutableLiveData<Event<String>>()
-    val clickedYoutubeId: LiveData<Event<String>> get() = _clickedYoutubeId
+    private val _clickedYoutube = MutableLiveData<Event<Youtube>>()
+    val clickedYoutube: LiveData<Event<Youtube>> get() = _clickedYoutube
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
@@ -23,8 +23,8 @@ abstract class BaseViewModel(private val bookmarkRepository: BookmarkRepository)
         disposables.add(disposable)
     }
 
-    fun onYoutubeClicked(youtubeId: String) {
-        _clickedYoutubeId.value = Event(youtubeId)
+    fun onYoutubeClicked(id: String, title: String) {
+        _clickedYoutube.value = Event(Youtube(title = title, id = id))
     }
 
     fun onBookmarkClicked(youtube: Youtube) {
