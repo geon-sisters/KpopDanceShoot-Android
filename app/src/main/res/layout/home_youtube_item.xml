@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="30dp"
-        android:onClick="@{() -> vm.onYoutubeClicked(item.id)}"
+        android:onClick="@{() -> vm.onYoutubeClicked(item.id, item.title)}"
         android:background="?attr/selectableItemBackground"
         tools:context=".ui.MainActivity">
 

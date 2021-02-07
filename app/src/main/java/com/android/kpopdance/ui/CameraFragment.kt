@@ -22,6 +22,7 @@ class CameraFragment : Fragment(), View.OnClickListener {
 
     private lateinit var resolver: ContentResolver
     private var youtubeId: String = ""
+    private var youtubeTitle: String = ""
     private var isVideoRecording: Boolean = false
     private var uri: Uri? = null
 
@@ -36,6 +37,7 @@ class CameraFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         resolver = activity!!.contentResolver
         youtubeId = arguments!!.getString(Contract.ID, "")
+        youtubeTitle = arguments!!.getString(Contract.TITLE, "")
 
         camera.setLifecycleOwner(viewLifecycleOwner)
         camera.addCameraListener(Listener())
@@ -54,13 +56,15 @@ class CameraFragment : Fragment(), View.OnClickListener {
             Log.i(TAG, "onVideoRecordingStart")
         }
 
+        override fun onVideoRecordingEnd() {
+            super.onVideoRecordingEnd()
+            recordButton.setImageResource(R.mipmap.ic_record)
+            isVideoRecording = false
+        }
+
         override fun onVideoTaken(result: VideoResult) {
             super.onVideoTaken(result)
             Log.i(TAG, "onVideoTaken")
-            val fileDetails = ContentValues().apply {
-                put(MediaStore.Video.Media.IS_PENDING, 0)
-            }
-            resolver.update(uri!!, fileDetails, null, null)
             Toast.makeText(activity, "저장되었습니다", Toast.LENGTH_SHORT).show()
             uri = null
         }
@@ -68,26 +72,23 @@ class CameraFragment : Fragment(), View.OnClickListener {
 
     private fun recordVideo() {
         if (isVideoRecording) {
+            camera.stopVideo()
+        } else {
             val videoCollection = MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
             val videoDetails = ContentValues().apply {
-                put(MediaStore.Video.Media.DISPLAY_NAME, youtubeId)
+                put(MediaStore.Video.Media.DISPLAY_NAME, youtubeId + "_" + youtubeTitle)
                 put(MediaStore.Video.Media.MIME_TYPE, "video/mp4")
-                put(MediaStore.Video.Media.IS_PENDING, 1)
             }
 
             uri = resolver.insert(videoCollection, videoDetails)
-            val videoFileDescriptor = resolver.openFileDescriptor(uri!!, "w", null)?.fileDescriptor
+            val videoFileDescriptor = uri?.let { resolver.openFileDescriptor(it, "w", null)?.fileDescriptor }
             if (videoFileDescriptor != null) {
                 camera.takeVideo(videoFileDescriptor)
                 recordButton.setImageResource(R.mipmap.ic_stop)
-                isVideoRecording = false
+                isVideoRecording = true
             } else {
                 Toast.makeText(activity, "실패하였습니다", Toast.LENGTH_SHORT).show()
             }
-        } else {
-            camera.stopVideo()
-            recordButton.setImageResource(R.mipmap.ic_record)
-            isVideoRecording = true
         }
     }
 }

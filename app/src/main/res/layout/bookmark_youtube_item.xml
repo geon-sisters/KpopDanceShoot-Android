@@ -13,7 +13,7 @@
         android:layout_margin="10dp"
         android:orientation="horizontal"
         android:background="?attr/selectableItemBackground"
-        android:onClick="@{() -> vm.onYoutubeClicked(item.id)}">
+        android:onClick="@{() -> vm.onYoutubeClicked(item.id, item.title)}">
 
         <ImageView
             android:id="@+id/smallThumbnailView"
