@@ -12,7 +12,12 @@ import kr.co.prnd.YouTubePlayerView
 
 
 class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-    private val TAG = Contract.YOUR_KDANCE + DanceActivity::class.simpleName
+    companion object {
+        private val TAG = Contract.YOUR_KDANCE + DanceActivity::class.simpleName
+        private const val SELECTED_FRAGMENT: String = "SELECTED_FRAGMENT"
+    }
+
+    private var selectedFragment = 0
     private var youtubeId: String = ""
     private var youtubeTitle: String = ""
 
@@ -28,7 +33,18 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         youTubePlayerView.play(youtubeId)
 
         danceNavigationView.setOnNavigationItemSelectedListener(this)
-        supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getCameraFragment()).commit()
+
+        selectedFragment = savedInstanceState?.getInt(SELECTED_FRAGMENT, 0)?:0
+        if (selectedFragment == 0) {
+            supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getCameraFragment()).commit()
+        } else {
+            supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getAlbumFragment()).commit()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(SELECTED_FRAGMENT, selectedFragment)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -36,10 +52,12 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.dance_camera -> {
                 Log.i(TAG, "camera")
                 supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getCameraFragment()).commit()
+                selectedFragment = 0
             }
             R.id.dance_album -> {
                 Log.i(TAG, "album")
                 supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getAlbumFragment()).commit()
+                selectedFragment = 1
             }
         }
         return true
