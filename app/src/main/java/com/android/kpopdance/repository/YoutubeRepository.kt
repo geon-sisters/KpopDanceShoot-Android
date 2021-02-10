@@ -55,4 +55,8 @@ class YoutubeRepository(private val youtubeApi: YoutubeApi, private val bookmark
     fun getBookmarked(): Maybe<List<Youtube>> {
         return getAll().map { it.filter { item -> item.isBookmarked } }
     }
+
+    fun getQuickSearch(): Maybe<List<String>> {
+        return getAll().map{ it.map(Youtube::name) }
+    }
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.kpopdance.data.Youtube
 import com.android.kpopdance.ui.BookmarkYoutubeAdapter
 import com.android.kpopdance.ui.HomeYoutubeAdapter
+import com.android.kpopdance.ui.QuickSearchAdapter
 import com.android.kpopdance.ui.SearchYoutubeAdapter
 import com.android.kpopdance.viewmodel.BookmarkViewModel
 import com.android.kpopdance.viewmodel.HomeViewModel
@@ -33,6 +34,20 @@ fun setSearchYoutubes(view: RecyclerView, items: List<Youtube>, vm: SearchViewMo
         }
     } ?: run {
         SearchYoutubeAdapter(items, vm).apply {
+            view.adapter = this
+        }
+    }
+}
+
+@BindingAdapter(value = ["quickSearches", "quickSearchViewModel"])
+fun setQuickSearches(view: RecyclerView, artists: List<String>, vm: SearchViewModel) {
+    view.adapter?.run {
+        if (this is QuickSearchAdapter) {
+            this.artists = artists
+            this.notifyDataSetChanged()
+        }
+    } ?: run {
+        QuickSearchAdapter(artists, vm).apply {
             view.adapter = this
         }
     }

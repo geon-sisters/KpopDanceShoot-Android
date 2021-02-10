@@ -12,14 +12,22 @@ class SearchViewModel(private val youtubeRepository: YoutubeRepository, bookmark
     override fun onPostBookmarkClicked() = getSearchedYoutube()
 
     private val TAG = Contract.YOUR_KDANCE + SearchViewModel::class.simpleName
+
     private val _youtubes = MutableLiveData<List<Youtube>>(arrayListOf())
     val youtubes: LiveData<List<Youtube>> get() = _youtubes
+
+    private val _quickSearches = MutableLiveData<List<String>>(arrayListOf())
+    val quickSearches: LiveData<List<String>> get() = _quickSearches
+
+    private var _clickedQuickSearch = MutableLiveData<Event<String>>()
+    val clickedQuickSearch: LiveData<Event<String>> get() = _clickedQuickSearch
 
     private var query: CharSequence = ""
 
     init {
         Log.i(TAG, "init")
         getSearchedYoutube()
+        getQuickSearches()
     }
 
     fun onEditTextChanged(query: CharSequence) {
@@ -34,14 +42,31 @@ class SearchViewModel(private val youtubeRepository: YoutubeRepository, bookmark
         getSearchedYoutube()
     }
 
+    fun onQuickSearchButtonClicked(artist: String) {
+        Log.i(TAG, "QuickSearch button clicked $artist")
+        _clickedQuickSearch.value = Event(artist)
+    }
+
     private fun getSearchedYoutube() {
         addToDisposable(
             youtubeRepository.getSearched(query)
                 .subscribe({
                     _youtubes.value = it
-                    Log.d(TAG, "Success")
+                    Log.d(TAG, "GetSearchedYoutube Success")
                 }, {
-                    Log.d(TAG, "Fail : $it")
+                    Log.d(TAG, "GetSearchedYoutube Fail : $it")
+                })
+        )
+    }
+
+    private fun getQuickSearches() {
+        addToDisposable(
+            youtubeRepository.getQuickSearch()
+                .subscribe({
+                    _quickSearches.value = it.distinct().sorted()
+                    Log.d(TAG, "GetQuickSearches Success")
+                }, {
+                    Log.d(TAG, "GetQuickSearches Fail : $it")
                 })
         )
     }

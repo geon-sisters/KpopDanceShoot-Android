@@ -3,30 +3,24 @@ package com.android.kpopdance.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kpopdance.R
+import com.android.kpopdance.databinding.QuickSearchItemBinding
+import com.android.kpopdance.viewmodel.SearchViewModel
 
-class QuickSearchAdapter : RecyclerView.Adapter<QuickSearchAdapter.ViewHolder>() {
-    var singers = mutableListOf<String>()
-
+class QuickSearchAdapter(var artists: List<String> = arrayListOf(), val vm: SearchViewModel) : RecyclerView.Adapter<QuickSearchAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.quick_search_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.quick_search_item, parent, false))
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(singers[position])
+        viewHolder.binding.artist = artists[position]
+        viewHolder.binding.vm = vm
     }
 
-    override fun getItemCount(): Int = singers.size
+    override fun getItemCount(): Int = artists.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val buttonText = itemView.findViewById<Button>(R.id.singerButton)
-
-        fun bind(singer: String) {
-            buttonText.text = singer
-        }
+        val binding: QuickSearchItemBinding = QuickSearchItemBinding.bind(itemView)
     }
 }

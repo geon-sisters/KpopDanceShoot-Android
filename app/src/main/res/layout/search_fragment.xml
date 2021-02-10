@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="vm" type="com.android.kpopdance.viewmodel.SearchViewModel" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.SearchFragment">
@@ -73,16 +73,18 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="20dp"
-                    android:text="@string/artist"
+                    android:text="@string/quick_search"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/singerRecyclerView"
+                    android:id="@+id/quickSearchRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/quick_search_item" />
+                    app:quickSearchViewModel="@{vm}"
+                    app:quickSearches="@{vm.quickSearches}" />
             </LinearLayout>
 
         </androidx.drawerlayout.widget.DrawerLayout>
