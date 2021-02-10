@@ -27,6 +27,13 @@ class SearchFragment : BaseFragment() {
 
         val viewModel: SearchViewModel = getViewModel()
         viewModel.clickedYoutube.eventObserve(this) { youtube -> startDanceActivity(youtube)}
+        viewModel.clickedQuickSearch.eventObserve(this) {
+            searchEditText.setText(it)
+            viewModel.onSearchButtonClicked()
+            if (drawer.isDrawerOpen(Gravity.RIGHT)) {
+                drawer.closeDrawer(Gravity.RIGHT)
+            }
+        }
 
         binding.vm = viewModel
         binding.lifecycleOwner = this.activity
@@ -40,16 +47,11 @@ class SearchFragment : BaseFragment() {
 
         activity?.findViewById<ImageButton>(R.id.mainToolbarButton)?.setOnClickListener {
             if (drawer.isDrawerOpen(Gravity.RIGHT)) {
+                quickSearchRecyclerView.scrollToPosition(0)
                 drawer.closeDrawer(Gravity.RIGHT)
             } else {
                 drawer.openDrawer(Gravity.RIGHT)
             }
         }
-
-
-        val quickSearchAdapter = QuickSearchAdapter()
-        // for test
-        quickSearchAdapter.singers = arrayListOf("Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "Itzy", "BlackPink", "EXO")
-        singerRecyclerView.adapter = quickSearchAdapter
     }
 }
