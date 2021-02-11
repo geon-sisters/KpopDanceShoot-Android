@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Record Your K-Dance!"
+        android:text="@string/record_your_k_dance"
         android:visibility="invisible" />
 
 </FrameLayout>

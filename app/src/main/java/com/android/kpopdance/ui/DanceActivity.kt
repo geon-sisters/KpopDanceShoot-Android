@@ -1,9 +1,13 @@
 package com.android.kpopdance.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.android.kpopdance.R
 import com.android.kpopdance.contract.Contract
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,9 +16,10 @@ import kr.co.prnd.YouTubePlayerView
 
 
 class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-    companion object {
-        private val TAG = Contract.YOUR_KDANCE + DanceActivity::class.simpleName
-        private const val SELECTED_FRAGMENT: String = "SELECTED_FRAGMENT"
+    private companion object {
+        val TAG = Contract.YOUR_KDANCE + DanceActivity::class.simpleName
+        const val SELECTED_FRAGMENT: String = "SELECTED_FRAGMENT"
+        const val REQUEST_CODE = 100
     }
 
     private var selectedFragment = 0
@@ -40,6 +45,8 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         } else {
             supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getAlbumFragment()).commit()
         }
+
+        permissionCheck()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -61,6 +68,32 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
         }
         return true
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE && grantResults.firstOrNull{it != PackageManager.PERMISSION_GRANTED} != null) {
+            Toast.makeText(this, "Please allow permissions.", Toast.LENGTH_LONG).show()
+            finish()
+        }
+    }
+
+    private fun permissionCheck(){
+        val permissionRequests: ArrayList<String> = arrayListOf()
+
+        if (android.os.Build.VERSION.SDK_INT <= 28
+            && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionRequests.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            permissionRequests.add(Manifest.permission.RECORD_AUDIO)
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            permissionRequests.add(Manifest.permission.CAMERA)
+        }
+        if (permissionRequests.isNotEmpty()) {
+            requestPermissions(permissionRequests.toTypedArray(), REQUEST_CODE)
+        }
     }
 
     private fun getCameraFragment(): CameraFragment {
