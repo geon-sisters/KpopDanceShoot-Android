@@ -8,16 +8,15 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.android.kpopdance.contract.Contract
 import com.android.kpopdance.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.android.kpopdance.contract.Contract
 import com.google.android.gms.ads.MobileAds
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private val TAG = Contract.YOUR_KDANCE + MainActivity::class.simpleName
     private val homeFragment = HomeFragment()
-    private val searchFragment = SearchFragment()
     private val bookmarkFragment = BookmarkFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 Log.i(TAG, "search")
                 mainToolbarTextView.setText(R.string.search)
                 mainToolbarButton.setVisibility(View.VISIBLE)
-                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, searchFragment).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.mainFrameLayout, SearchFragment()).commit()
             }
             R.id.bottom_bookmark -> {
                 Log.i(TAG, "bookmark")
