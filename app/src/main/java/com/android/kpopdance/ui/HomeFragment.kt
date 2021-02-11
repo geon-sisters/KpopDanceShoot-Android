@@ -9,10 +9,11 @@ import com.android.kpopdance.R
 import com.android.kpopdance.databinding.HomeFragmentBinding
 import com.android.kpopdance.viewmodel.HomeViewModel
 import com.android.kpopdance.viewmodel.eventObserve
+import kotlinx.android.synthetic.main.home_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), View.OnClickListener {
     private lateinit var binding: HomeFragmentBinding
 
     override fun onCreateView(
@@ -27,5 +28,18 @@ class HomeFragment : BaseFragment() {
         binding.vm = viewModel
         binding.lifecycleOwner = this.activity
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        upButton.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View) {
+        when(view.id) {
+            R.id.upButton -> {
+                homeRecyclerView.smoothScrollToPosition(0)
+            }
+        }
     }
 }

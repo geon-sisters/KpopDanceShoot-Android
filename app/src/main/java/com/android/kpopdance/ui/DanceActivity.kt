@@ -19,6 +19,8 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private companion object {
         val TAG = Contract.YOUR_KDANCE + DanceActivity::class.simpleName
         const val SELECTED_FRAGMENT: String = "SELECTED_FRAGMENT"
+        const val CAMERA = 0
+        const val ALBUM = 1
         const val REQUEST_CODE = 100
     }
 
@@ -39,8 +41,8 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         danceNavigationView.setOnNavigationItemSelectedListener(this)
 
-        selectedFragment = savedInstanceState?.getInt(SELECTED_FRAGMENT, 0)?:0
-        if (selectedFragment == 0) {
+        selectedFragment = savedInstanceState?.getInt(SELECTED_FRAGMENT, CAMERA)?:CAMERA
+        if (selectedFragment == CAMERA) {
             supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getCameraFragment()).commit()
         } else {
             supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getAlbumFragment()).commit()
@@ -59,12 +61,12 @@ class DanceActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.dance_camera -> {
                 Log.i(TAG, "camera")
                 supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getCameraFragment()).commit()
-                selectedFragment = 0
+                selectedFragment = CAMERA
             }
             R.id.dance_album -> {
                 Log.i(TAG, "album")
                 supportFragmentManager.beginTransaction().replace(R.id.danceFrameLayout, getAlbumFragment()).commit()
-                selectedFragment = 1
+                selectedFragment = ALBUM
             }
         }
         return true
