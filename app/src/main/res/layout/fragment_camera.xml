@@ -17,7 +17,8 @@
         app:cameraGesturePinch="zoom"
         app:cameraGestureTap="autoFocus"
         app:cameraMode="video"
-        app:cameraPlaySounds="false" />
+        app:cameraPlaySounds="false"
+        app:cameraRequestPermissions="false" />
 
     <ImageButton
         android:id="@+id/recordButton"

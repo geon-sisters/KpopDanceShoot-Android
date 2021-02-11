@@ -74,7 +74,7 @@ class CameraFragment : Fragment(), View.OnClickListener {
         if (isVideoRecording) {
             camera.stopVideo()
         } else {
-            val videoCollection = MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+            val videoCollection = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
             val videoDetails = ContentValues().apply {
                 put(MediaStore.Video.Media.DISPLAY_NAME, youtubeId + "_" + youtubeTitle)
                 put(MediaStore.Video.Media.MIME_TYPE, "video/mp4")
