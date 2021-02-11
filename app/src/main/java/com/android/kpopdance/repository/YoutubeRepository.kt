@@ -3,14 +3,17 @@ package com.android.kpopdance.repository
 import android.util.Log
 import com.android.kpopdance.contract.Contract
 import com.android.kpopdance.data.Youtube
+import com.android.kpopdance.model.Bookmark
 import com.android.kpopdance.model.BookmarkDao
 import com.android.kpopdance.model.YoutubeApi
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class YoutubeRepository(private val youtubeApi: YoutubeApi, private val bookmarkDao: BookmarkDao) {
+class YoutubeRepository(youtubeApi: YoutubeApi, private val bookmarkDao: BookmarkDao) {
     private val TAG = Contract.YOUR_KDANCE + YoutubeRepository::class.simpleName
 
     private var cachedYoutubes: List<Youtube> = arrayListOf()
@@ -23,13 +26,14 @@ class YoutubeRepository(private val youtubeApi: YoutubeApi, private val bookmark
     private var remote: Observable<List<Youtube>> = youtubeApi.get()
         .subscribeOn(Schedulers.io())
         .map {
-            val bookmarkId = bookmarkDao.getAll().map{ bookmark -> bookmark.youtubeId }
+            val bookmarkId = bookmarkDao.getAll().map(Bookmark::youtubeId)
             it.map { youtube ->
                 if (bookmarkId.contains(youtube.id)) {
                     youtube.isBookmarked = true
                 }
+                youtube.localDate = LocalDate.parse(youtube.date, DateTimeFormatter.ofPattern("yyyy. M. d."))
             }
-            it
+            it.sortedByDescending(Youtube::localDate)
         }
         .observeOn(AndroidSchedulers.mainThread())
         .doOnNext {
