@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="item" type="com.android.kpopdance.data.Youtube" />
-        <variable name="vm" type="com.android.kpopdance.viewmodel.HomeViewModel" />
+        <variable name="item" type="com.your.kpopdance.data.Youtube" />
+        <variable name="vm" type="com.your.kpopdance.viewmodel.HomeViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

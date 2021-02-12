@@ -1,7 +1,7 @@
 <layout>
     <data>
         <variable name="artist" type="String" />
-        <variable name="vm" type="com.android.kpopdance.viewmodel.SearchViewModel" />
+        <variable name="vm" type="com.your.kpopdance.viewmodel.SearchViewModel" />
     </data>
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/singerButton"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="vm" type="com.android.kpopdance.viewmodel.BookmarkViewModel" />
+        <variable name="vm" type="com.your.kpopdance.viewmodel.BookmarkViewModel" />
     </data>
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            ads:adUnitId="ca-app-pub-6069792837282295/7569845556">
         </com.google.android.gms.ads.AdView>
     </FrameLayout>
 </layout>
