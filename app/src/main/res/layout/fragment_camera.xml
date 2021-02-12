@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".ui.CameraFragment">
+
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:keepScreenOn="true"
+        app:cameraFacing="front"
+        app:cameraGesturePinch="zoom"
+        app:cameraGestureTap="autoFocus"
+        app:cameraMode="video"
+        app:cameraPlaySounds="false"
+        app:cameraRequestPermissions="false" />
+
+    <ImageButton
+        android:id="@+id/recordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="#00FFFFFF"
+        android:padding="10dp"
+        android:src="@mipmap/ic_record" />
+</FrameLayout>

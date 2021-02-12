@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dance_camera"
+        android:icon="@drawable/ic_videocam_black_24dp"
+        android:title="@string/camera"/>
+    <item
+        android:id="@+id/dance_album"
+        android:icon="@drawable/ic_video_library_black_24dp"
+        android:title="@string/album"/>
+</menu>
