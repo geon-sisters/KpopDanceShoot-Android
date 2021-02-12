@@ -1,0 +1,27 @@
+package com.your.kpopdance.ui
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.your.kpopdance.R
+import com.your.kpopdance.data.Youtube
+import com.your.kpopdance.databinding.BookmarkYoutubeItemBinding
+import com.your.kpopdance.viewmodel.BookmarkViewModel
+
+class BookmarkYoutubeAdapter(var items: List<Youtube> = arrayListOf(), val vm: BookmarkViewModel) : RecyclerView.Adapter<BookmarkYoutubeAdapter.ViewHolder>()  {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.bookmark_youtube_item, parent, false))
+    }
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.binding.item = items[position]
+        viewHolder.binding.vm = vm
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val binding: BookmarkYoutubeItemBinding = BookmarkYoutubeItemBinding.bind(itemView)
+    }
+}

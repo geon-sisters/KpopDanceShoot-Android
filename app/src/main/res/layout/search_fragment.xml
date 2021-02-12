@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="vm" type="com.android.kpopdance.viewmodel.SearchViewModel" />
+        <variable name="vm" type="com.your.kpopdance.viewmodel.SearchViewModel" />
     </data>
 
     <FrameLayout
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            ads:adUnitId="ca-app-pub-6069792837282295/2763020241">
         </com.google.android.gms.ads.AdView>
     </FrameLayout>
 </layout>

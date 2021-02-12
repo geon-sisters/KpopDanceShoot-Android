@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="item" type="com.android.kpopdance.data.Youtube" />
-        <variable name="vm" type="com.android.kpopdance.viewmodel.BookmarkViewModel" />
+        <variable name="item" type="com.your.kpopdance.data.Youtube" />
+        <variable name="vm" type="com.your.kpopdance.viewmodel.BookmarkViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
