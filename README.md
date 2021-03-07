@@ -25,5 +25,5 @@
 ### [Google PlayStore : Your-KDance](https://play.google.com/store/apps/details?id=com.your.kpopdance)
 
 ### 개발자
-- waves72427721@gmail.com
-- geonhee7721@gmail.com
+- [waves72427721@gmail.com](https://www.linkedin.com/in/geonseo-kim-b77294207/)
+- [geonhee7721@gmail.com](https://www.linkedin.com/in/geonhee-kim-7709b2173/)
