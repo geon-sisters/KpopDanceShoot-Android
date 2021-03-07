@@ -1,3 +1,6 @@
+
+<img src="https://user-images.githubusercontent.com/76245227/110226751-1529fe80-7f35-11eb-83c1-198120bebf9e.png"  width="500">
+
 앱 이름 : Your K-Dance
 
 앱 설명
@@ -13,3 +16,9 @@
 - 협업 툴 : Slack, GitHub, Trello
 
 PlayStore : play.google.com/store/apps/details?id=com.your.kpopdance
+
+개발자
+- waves72427721@gmail.com
+- geonhee7721@gmail.com
+
+
