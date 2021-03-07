@@ -1,5 +1,5 @@
 
-<img src="https://user-images.githubusercontent.com/76245227/110226751-1529fe80-7f35-11eb-83c1-198120bebf9e.png"  width="800">
+<img src="https://user-images.githubusercontent.com/76245227/110226751-1529fe80-7f35-11eb-83c1-198120bebf9e.png"  width="700">
 
 #  :dancers: Your K-Dance
 
