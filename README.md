@@ -22,7 +22,7 @@
 <img src="https://user-images.githubusercontent.com/76245227/110226973-d006cc00-7f36-11eb-9c6e-b19efc5eb754.jpeg" width="20%"> <img src="https://user-images.githubusercontent.com/76245227/110227007-152afe00-7f37-11eb-9208-e6bf3cdb520e.jpeg" width="20%"> <img src="https://user-images.githubusercontent.com/76245227/110227009-16f4c180-7f37-11eb-9cee-8942192b1ce6.jpeg" width="20%"> <img src="https://user-images.githubusercontent.com/76245227/110227002-0fcdb380-7f37-11eb-95c9-f8c95c12f8a1.jpeg" width="20%">
 
 
-### [Google PlayStore : Your-KDance](https://play.google.com/store/apps/details?id=com.your.kpopdance)
+### [Google PlayStore : Your K-Dance](https://play.google.com/store/apps/details?id=com.your.kpopdance)
 
 ### 개발자
 - [waves72427721@gmail.com](https://www.linkedin.com/in/geonseo-kim-b77294207/)
